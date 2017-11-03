@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Carbon</string>
+    <string name="title_home">Home</string>
+    <string name="title_explore">Explore</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_settings">Settings</string>
+</resources>
