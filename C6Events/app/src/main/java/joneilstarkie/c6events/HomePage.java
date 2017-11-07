@@ -23,8 +23,8 @@ public class HomePage extends AppCompatActivity {
                 case R.id.navigation_explore:
                     mTextMessage.setText(R.string.title_explore);
                     return true;
-                case R.id.navigation_profile:
-                    mTextMessage.setText(R.string.title_profile);
+                case R.id.navigation_connect:
+                    mTextMessage.setText(R.string.title_connect);
                     return true;
                 case R.id.navigation_settings:
                     mTextMessage.setText(R.string.title_settings);
