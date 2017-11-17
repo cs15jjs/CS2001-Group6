@@ -27,8 +27,10 @@ public class MainActivity extends AppCompatActivity {
                     transaction.replace(R.id.content, new ExploreFragment()).commit();
                     return true;
                 case R.id.navigation_connect:
+                    transaction.replace(R.id.content, new ConnectFragment()).commit();
                     return true;
                 case R.id.navigation_settings:
+                    transaction.replace(R.id.content, new SettingsFragment()).commit();
                     return true;
             }
             return false;
