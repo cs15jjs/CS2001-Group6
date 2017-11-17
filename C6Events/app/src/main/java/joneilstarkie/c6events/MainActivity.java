@@ -3,31 +3,32 @@ package joneilstarkie.c6events;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class HomePage extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                    transaction.replace(R.id.content, new HomePageFragment()).commit();
                     return true;
                 case R.id.navigation_explore:
-                    mTextMessage.setText(R.string.title_explore);
+                    transaction.replace(R.id.content, new ExploreFragment()).commit();
                     return true;
                 case R.id.navigation_connect:
-                    mTextMessage.setText(R.string.title_connect);
                     return true;
                 case R.id.navigation_settings:
-                    mTextMessage.setText(R.string.title_settings);
                     return true;
             }
             return false;
@@ -40,9 +41,14 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-    }
+        if (savedInstanceState == null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.replace(R.id.content, new HomePageFragment()).commit();
 
+            BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+            navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        }
+
+    }
 }
